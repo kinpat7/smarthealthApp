@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root "patients#index"
+
   get 'checkups/index'
 
   get 'checkups/show'
