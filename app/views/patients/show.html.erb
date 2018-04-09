@@ -25,5 +25,14 @@
   <%= @patient.special_observation %>
 </p>
 
+<h2>Checkups</h2>
+<% @patient.checkups.each do |checkup| %>
+<p>
+<b>Checkup details:</b>
+<%= checkup.details %>
+</p>
+<% end %>
+
 <%= link_to 'Edit', edit_patient_path(@patient) %> |
 <%= link_to 'Back', patients_path %>
+<%= link_to 'Show Checkups', patient_checkups_path(@patient) %>

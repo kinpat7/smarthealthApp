@@ -1,2 +1,23 @@
 <h1>Checkups#index</h1>
 <p>Find me in app/views/checkups/index.html.erb</p>
+
+<h1>Checkups in <%= @patient.patient_name %></h1>
+<table>
+<tr>
+<th>Checkup details</th>
+</tr>
+<% for checkup in @checkups %>
+<tr>
+<td><%= checkup.details %></td>
+<td><%= link_to 'Show', patient_checkup_path(@patient, checkup)
+%></td>
+<td><%= link_to 'Edit', edit_patient_checkup_path(@patient, checkup)
+%></td>
+<td><%= link_to 'Destroy', patient_checkup_path(@patient, checkup),
+:confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
+<% end %>
+</table>
+<br />
+<%= link_to 'New checkup', new_patient_checkup_path(@patient) %>
+<%= link_to 'Back to Movie', @patient %>

@@ -1,2 +1,10 @@
 <h1>Checkups#show</h1>
 <p>Find me in app/views/checkups/show.html.erb</p>
+
+<h1>Checkup in <%= @patient.title %></h1>
+<p>
+<b>Checkup details:</b>
+<%= @checkup.details %>
+</p>
+<%= link_to 'Edit', edit_patient_checkup_path(@patient, @checkup) %> |
+<%= link_to 'Back', patient_checkups_path(@patient) %>

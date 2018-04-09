@@ -1,2 +1,3 @@
-class Patient < ApplicationRecord
+class Patient < ActiveRecord::Base
+has_many :checkups
 end
