@@ -29,7 +29,7 @@ gem 'datatables'
 gem 'jquery-datatables-rails'
 gem 'popper_js', '~> 1.12.9'
 gem 'jquery-turbolinks'
-gem 'date_today', '~> 0.1.0'
+gem 'date_today', '~> 0.1.1'
 
 gem 'devise'
 
