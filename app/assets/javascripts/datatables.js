@@ -1,4 +1,4 @@
-//= require datatables/jquery.dataTables
+//= require jquery.dataTables
 
 // optional change '//' --> '//=' to enable
 
