@@ -1,23 +1,24 @@
-<h1>Checkups#index</h1>
-<p>Find me in app/views/checkups/index.html.erb</p>
-
-<h1>Checkups in <%= @patient.patient_name %></h1>
-<table>
+<h1>Checkups for <%= @patient.patient_name %></h1>
+<table class="table">
 <tr>
 <th>Checkup details</th>
+<th>Doctor</th>
+<th>Clinic</th>
+<th>Date</th>
+
 </tr>
 <% for checkup in @checkups %>
 <tr>
-<td><%= checkup.details %></td>
-<td><%= link_to 'Show', patient_checkup_path(@patient, checkup)
-%></td>
-<td><%= link_to 'Edit', edit_patient_checkup_path(@patient, checkup)
-%></td>
-<td><%= link_to 'Destroy', patient_checkup_path(@patient, checkup),
-:confirm => 'Are you sure?', :method => :delete %></td>
+<td><%= checkup.summary %></td>
+<td><%= Doctor.find(checkup['doctor_id'])['doctor_name'] %></td>
+<td><%= Clinic.find(checkup['clinic_id'])['clinic_name'] %></td>
+<td><%= checkup.date %></td>
+<td><%= link_to 'Show', patient_checkup_path(@patient, checkup), class: "btn btn-sm-primary"%></td>
+<td><%= link_to 'Edit', edit_patient_checkup_path(@patient, checkup), class: "btn btn-sm-primary"%></td>
+<!-- <td><%= link_to 'Destroy', patient_checkup_path(@patient, checkup),:confirm => 'Are you sure?', :method => :delete %></td> -->
 </tr>
 <% end %>
 </table>
 <br />
-<%= link_to 'New checkup', new_patient_checkup_path(@patient) %>
-<%= link_to 'Back to Movie', @patient %>
+<%= link_to 'New checkup', new_patient_checkup_path(@patient), class: "btn btn-primary" %>
+<%= link_to 'Back to Patient', @patient, class: "btn btn-primary" %>

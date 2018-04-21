@@ -1,6 +1,6 @@
-<h1>Editing Hospital</h1>
+<h1>Edit Hospital</h1>
 
 <%= render 'form', hospital: @hospital %>
 
-<%= link_to 'Show', @hospital %> |
-<%= link_to 'Back', hospitals_path %>
+<%= link_to 'Show', @hospital, class: "btn btn-sm mx-1 btn-secondary" %>
+<%= link_to 'Back', hospitals_path, class: "btn btn-sm mx-1 btn-secondary" %>

@@ -1,61 +1,61 @@
 class CheckupsController < ApplicationController
-  # GET /movies/1/reviews
+  # GET /patients/1/checkups
   def index
-  # For URL like /movies/1/reviews
-  # Get the movie with id=1
+  # For URL like /patients/1/checkups
+  # Get the patient with id=1
   @patient = Patient.find(params[:patient_id])
-  # Access all reviews for that movie
+  # Access all checkups for that patient
   @checkups = @patient.checkups
   end
-  # GET /movies/1/reviews/2
+  # GET /patients/1/checkups/2
   def show
   @patient = Patient.find(params[:patient_id])
-  # For URL like /movies/1/reviews/2
-  # Find an review in movies 1 that has id=2
+  # For URL like /patients/1/checkups/2
+  # Find an checkup in patients 1 that has id=2
   @checkup = @patient.checkups.find(params[:id])
   end
-  # GET /movies/1/reviews/new
+  # GET /patients/1/checkups/new
   def new
   @patient = Patient.find(params[:patient_id])
-  # Associate an review object with movie 1
+  # Associate an checkup object with patient 1
   @checkup = @patient.checkups.build
   end
-  # POST /movies/1/reviews
+  # POST /patients/1/checkups
   def create
   @patient = Patient.find(params[:patient_id])
-  # For URL like /movies/1/reviews
-  # Populate an review associate with movie 1 with form data
-  # Movie will be associated with the review
-  # @review = @movie.reviews.build(params.require(:review).permit!)
+  # For URL like /patients/1/checkups
+  # Populate an checkup associate with patient 1 with form data
+  # Movie will be associated with the checkup
+  # @checkup = @patient.checkups.build(params.require(:checkup).permit!)
   @checkup =
-  @patient.checkups.build(params.require(:checkup).permit(:details))
+  @patient.checkups.build(params.require(:checkup).permit(:clinic_id, :doctor_id, :date, :time, :summary))
   if @checkup.save
-  # Save the review successfully
+  # Save the checkup successfully
   redirect_to patient_checkup_url(@patient, @checkup)
   else
   render :action => "new"
   end
   end
-  # GET /movies/1/reviews/2/edit
+  # GET /patients/1/checkups/2/edit
   def edit
   @patient = Patient.find(params[:patient_id])
-  # For URL like /movies/1/reviews/2/edit
-  # Get review id=2 for movie 1
+  # For URL like /patients/1/checkups/2/edit
+  # Get checkup id=2 for patient 1
   @checkup = @patient.checkups.find(params[:id])
   end
-  # PUT /movies/1/reviews/2
+  # PUT /patients/1/checkups/2
   def update
   @patient = Patient.find(params[:patient_id])
   @checkup = Checkup.find(params[:id])
   if
-  @checkup.update_attributes(params.require(:checkup).permit(:details))
-  # Save the review successfully
+  @checkup.update_attributes(params.require(:checkup).permit(:clinic_id, :doctor_id, :date, :time, :summary))
+  # Save the checkup successfully
   redirect_to patient_checkup_url(@patient, @checkup)
   else
   render :action => "edit"
   end
   end
-  # DELETE /movies/1/reviews/2
+  # DELETE /patients/1/checkups/2
   def destroy
   @patient = Patient.find(params[:patient_id])
   @checkup = Checkup.find(params[:id])

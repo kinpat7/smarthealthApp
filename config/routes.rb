@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
-  root "patients#index"
+  get 'requests/index'
+
+  get 'requests/show'
+
+  get 'requests/new'
+
+  get 'requests/edit'
+
+  devise_for :users
+  root "pages#home"
 
   get 'checkups/index'
 
@@ -10,9 +19,16 @@ Rails.application.routes.draw do
 
   get 'checkups/edit'
 
+  get 'reports/generate'
+
+  post 'reports/display'
+
   resources :hospitals
   resources :clinics
   resources :doctors
+  resources :patients do
+    resources :requests
+  end
   resources :patients do
   resources :checkups
 

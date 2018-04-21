@@ -1,24 +1,40 @@
-<p id="notice"><%= notice %></p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<p>
-  <strong>Clinic name:</strong>
-  <%= @clinic.clinic_name %>
-</p>
+<div class="container">
+	<div class="row">
+       <div class="col-md-7 ">
+</div>
 
-<p>
-  <strong>Clinic address:</strong>
-  <%= @clinic.clinic_address %>
-</p>
+<br>
+  <!-- /input-group -->
+</div>
+<div class="col-sm-6">
+<h4 style="color:#00b1b1;"><%= @clinic.clinic_name %> </h4></span>
+</div>
+<div class="clearfix"></div>
+<hr style="margin:5px 0 5px 0;">
 
-<p>
-  <strong>Clinic phone:</strong>
-  <%= @clinic.clinic_phone %>
-</p>
+<div class="col-sm-5 col-xs-6 tital " >Address:</div><div class="col-sm-7"> <%= @clinic.clinic_address %> </div>
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
 
-<p>
-  <strong>Clinic email:</strong>
-  <%= @clinic.clinic_email %>
-</p>
+<div class="col-sm-5 col-xs-6 tital " >Phone No:</div><div class="col-sm-7"> <%= @clinic.clinic_phone %> </div>
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
 
-<%= link_to 'Edit', edit_clinic_path(@clinic) %> |
-<%= link_to 'Back', clinics_path %>
+<div class="col-sm-5 col-xs-6 tital " >eMail.:</div><div class="col-sm-7"><%= @clinic.clinic_email %> </div>
+
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+				</div>
+			</div>
+		</div>
+   </div>
+</div>
+<br>
+
+<%= link_to 'Edit', edit_clinic_path(@clinic), class: "btn btn-sm mx-1 btn-secondary" %>
+<%= link_to 'Back', clinics_path, class: "btn btn-sm mx-1 btn-secondary" %>

@@ -1,0 +1,34 @@
+<%= form_for([@patient, @request]) do |f| %>
+<% if @request.errors.any? %>
+<div id="error_explanation">
+<h2><%= pluralize(@request.errors.count, "error")%>
+prohibited this request from being saved:</h2>
+<ul>
+<% @request.errors.full_messages.each do |msg| %>
+<li><%= msg %></li>
+<% end %>
+</ul>
+</div>
+<% end %>
+<div class="field">
+<p>
+<%= f.label :Summary %><br />
+<%= f.text_field :summary %>
+</p>
+</div>
+
+<div class="form-group">
+  <%= f.label :Doctor %><br />
+  <%= f.collection_select :doctor_id, Doctor.all, :id, :doctor_name, :prompt => "Select a doctor", class:"form-control" %>
+  </div>
+
+
+<div class="form-group">
+  <%= f.label :Hospital %><br />
+  <%= f.collection_select :hospital_id, Hospital.all, :id, :hospital_name, :prompt => "Select a Hospital", class:"form-control" %>
+  </div>
+
+<div class="actions">
+<%= f.submit %>
+</div>
+<% end %>

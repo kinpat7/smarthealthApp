@@ -25,6 +25,9 @@ class PatientsController < ApplicationController
   # POST /patients.json
   def create
     @patient = Patient.new(patient_params)
+      @patientvalues = params[:patient]
+      @doctor = Doctor.find(@patientvalues[:doctor_id])
+      @patient.doctors << @doctor
 
     respond_to do |format|
       if @patient.save

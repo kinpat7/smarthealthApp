@@ -1,38 +1,84 @@
-<p id="notice"><%= notice %></p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<p>
-  <strong>Patient name:</strong>
-  <%= @patient.patient_name %>
-</p>
+<div class="container">
+<div class="row">
+<div class="col-md-7 ">
 
-<p>
-  <strong>Dob:</strong>
-  <%= @patient.dob %>
-</p>
+<div class="panel panel-default">
+<div class="panel-heading">  <h4 >Patient Profile</h4></div>
+<div class="panel-body">
 
-<p>
-  <strong>Address:</strong>
-  <%= @patient.address %>
-</p>
+<div class="box box-info">
 
-<p>
-  <strong>Phone no:</strong>
-  <%= @patient.phone_no %>
-</p>
+<div class="box-body">
+   <div class="col-sm-6">
+   <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
 
-<p>
-  <strong>Special observation:</strong>
-  <%= @patient.special_observation %>
-</p>
+<input id="profile-image-upload" class="hidden" type="file">
+<div style="color:#999;" >click here to change profile image</div>
+</div>
 
-<h2>Checkups</h2>
+<br>
+</div>
+
+<div class="col-sm-6">
+<h4 style="color:#00b1b1;"><%= @patient.patient_name %> </h4></span>
+</div>
+<div class="clearfix"></div>
+<hr style="margin:5px 0 5px 0;">
+
+
+<div class="col-sm-5 col-xs-6 tital " >Name:</div><div class="col-sm-7 col-xs-6 "> <%= @patient.patient_name %> </div>
+     <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >DOB:</div><div class="col-sm-7"> <%= @patient.dob %> </div>
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Address:</div><div class="col-sm-7"> <%= @patient.address %> </div>
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Phone No.:</div><div class="col-sm-7"><%= @patient.phone_no %> </div>
+
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Special Observation:</div><div class="col-sm-7"><%= @patient.special_observation %> </div>
+
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+<script>
+$(function() {
+$('#profile-image1').on('click', function() {
+$('#profile-image-upload').click();
+});
+});
+</script>
+
+   </div>
+</div>
+
+<h2>Checkup Summary</h2>
 <% @patient.checkups.each do |checkup| %>
 <p>
-<b>Checkup details:</b>
-<%= checkup.details %>
+<b>Checkup summary:</b>
+<%= checkup.summary %>
 </p>
 <% end %>
-
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
-<%= link_to 'Show Checkups', patient_checkups_path(@patient) %>
+<br>
+<%= link_to 'Back', patients_path, class: "btn btn-sm mx-1 btn-secondary" %>
+<%= link_to 'Edit', edit_patient_path(@patient), class: "btn btn-primary" %>
+<%= link_to 'Show Checkups', patient_checkups_path(@patient), class: "btn btn-primary" %>
+<%= link_to 'Requests', patient_requests_path(@patient), class: "btn btn-primary" %>
+<br>

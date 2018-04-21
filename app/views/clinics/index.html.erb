@@ -2,14 +2,16 @@
 
 <h1>Clinics</h1>
 
-<table>
+<table class="table" id="datatables">
   <thead>
     <tr>
       <th>Clinic name</th>
       <th>Clinic address</th>
       <th>Clinic phone</th>
       <th>Clinic email</th>
-      <th colspan="3"></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -20,9 +22,9 @@
         <td><%= clinic.clinic_address %></td>
         <td><%= clinic.clinic_phone %></td>
         <td><%= clinic.clinic_email %></td>
-        <td><%= link_to 'Show', clinic %></td>
-        <td><%= link_to 'Edit', edit_clinic_path(clinic) %></td>
-        <td><%= link_to 'Destroy', clinic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', clinic, class: "btn btn-sm-primary" %></td>
+        <td><%= link_to 'Edit', edit_clinic_path(clinic), class: "btn btn-sm-primary" %></td>
+        <td><%= link_to 'Destroy', clinic, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm-primary" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Clinic', new_clinic_path %>
+<%= link_to 'New Clinic', new_clinic_path, class: "btn btn-primary" %>

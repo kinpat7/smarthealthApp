@@ -1,0 +1,24 @@
+<h1>Hospital Requests for <%= @patient.patient_name %></h1>
+<table class="table">
+<tr>
+<th>Request details</th>
+<th>Request</th>
+<th>Doctor</th>
+<th>Date/Time</th>
+
+</tr>
+<% for request in @requests %>
+<tr>
+<td><%= request.summary %></td>
+<td><%= Hospital.find(request['hospital_id'])['hospital_name'] %></td>
+<td><%= Doctor.find(request['doctor_id'])['doctor_name'] %></td>
+<td><%= request.created_at %></td>
+<td><%= link_to 'Show', patient_request_path(@patient, request), class: "btn btn-sm-primary"%></td>
+<td><%= link_to 'Edit', edit_patient_request_path(@patient, request), class: "btn btn-sm-primary"%></td>
+<!-- <td><%= link_to 'Destroy', patient_request_path(@patient, request),:confirm => 'Are you sure?', :method => :delete %></td> -->
+</tr>
+<% end %>
+</table>
+<br />
+<%= link_to 'New request', new_patient_request_path(@patient), class: "btn btn-primary" %>
+<%= link_to 'Back to Patient', @patient, class: "btn btn-primary" %>

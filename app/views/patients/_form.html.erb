@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :dob %>
-    <%= form.date_select :dob, id: :patient_dob %>
+    <%= form.date_select :dob, id: :patient_dob, :start_year=>1918,:end_year=>2030 %>
   </div>
 
   <div class="field">
@@ -30,6 +30,11 @@
     <%= form.label :phone_no %>
     <%= form.number_field :phone_no, id: :patient_phone_no %>
   </div>
+
+  <div class="form-group">
+    <%= form.label :Doctor %>
+    <%= form.collection_select :doctor_id, Doctor.all, :id, :doctor_name, :prompt => "Select a doctor", class:"form-control" %>
+    </div>
 
   <div class="field">
     <%= form.label :special_observation %>

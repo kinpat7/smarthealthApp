@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409181821) do
+ActiveRecord::Schema.define(version: 20180419185050) do
 
   create_table "checkups", force: :cascade do |t|
     t.integer "patient_id"
@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(version: 20180409181821) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "doctors_patients", id: false, force: :cascade do |t|
+    t.integer "patient_id", null: false
+    t.integer "doctor_id", null: false
+  end
+
   create_table "hospitals", force: :cascade do |t|
     t.string "hospital_name"
     t.string "hospital_address"
@@ -59,6 +64,35 @@ ActiveRecord::Schema.define(version: 20180409181821) do
     t.string "special_observation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "patient_id"
+    t.integer "hospital_id"
+    t.integer "doctor_id"
+    t.string "summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_requests_on_doctor_id"
+    t.index ["hospital_id"], name: "index_requests_on_hospital_id"
+    t.index ["patient_id"], name: "index_requests_on_patient_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

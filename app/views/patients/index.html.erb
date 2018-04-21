@@ -2,7 +2,7 @@
 
 <h1>Patients</h1>
 
-<table>
+<table class="table" id="datatables">
   <thead>
     <tr>
       <th>Patient name</th>
@@ -10,7 +10,9 @@
       <th>Address</th>
       <th>Phone no</th>
       <th>Special observation</th>
-      <th colspan="3"></th>
+      <th></th>
+      <th></th>
+
     </tr>
   </thead>
 
@@ -22,9 +24,8 @@
         <td><%= patient.address %></td>
         <td><%= patient.phone_no %></td>
         <td><%= patient.special_observation %></td>
-        <td><%= link_to 'Show', patient %></td>
-        <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', patient, class: "btn btn-sm-primary" %> </td>
+        <td><%= link_to 'Edit', edit_patient_path(patient), class: "btn btn-sm-primary" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New Patient', new_patient_path %>
+<%= link_to 'New Patient', new_patient_path, class: "btn btn-primary" %>
